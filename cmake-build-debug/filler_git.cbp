@@ -126,6 +126,9 @@
 		<Unit filename="/Users/amasol/amasol/project/filler_git/main.c">
 			<Option target="filler_git"/>
 		</Unit>
+		<Unit filename="/Users/amasol/amasol/project/filler_git/outline.c">
+			<Option target="filler_git"/>
+		</Unit>
 		<Unit filename="/Users/amasol/amasol/project/filler_git/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

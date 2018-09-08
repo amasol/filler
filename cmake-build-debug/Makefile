@@ -501,6 +501,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/main.c.s
 .PHONY : main.c.s
 
+outline.o: outline.c.o
+
+.PHONY : outline.o
+
+# target to build an object file
+outline.c.o:
+	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline.c.o
+.PHONY : outline.c.o
+
+outline.i: outline.c.i
+
+.PHONY : outline.i
+
+# target to preprocess a source file
+outline.c.i:
+	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline.c.i
+.PHONY : outline.c.i
+
+outline.s: outline.c.s
+
+.PHONY : outline.s
+
+# target to generate assembly for a file
+outline.c.s:
+	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline.c.s
+.PHONY : outline.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -552,6 +579,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... outline.o"
+	@echo "... outline.i"
+	@echo "... outline.s"
 .PHONY : help
 
 

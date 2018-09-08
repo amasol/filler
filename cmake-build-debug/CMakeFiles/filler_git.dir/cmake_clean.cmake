@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/filler_git.dir/libft/ft_atoi.c.o"
   "CMakeFiles/filler_git.dir/libft/ft_isdigit.c.o"
   "CMakeFiles/filler_git.dir/libft/ft_isspace.c.o"
+  "CMakeFiles/filler_git.dir/outline.c.o"
   "filler_git.pdb"
   "filler_git"
 )

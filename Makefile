@@ -13,7 +13,7 @@
 
 NAME = filler
 
-SRC = main.c ft_parsing.c
+SRC = main.c ft_parsing.c outline.c
 
 OBJ = $(SRC:.c=.o)
 

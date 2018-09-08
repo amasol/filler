@@ -18,4 +18,5 @@ add_executable(filler_git main.c
         libft/ft_strsub.c
         libft/ft_atoi.c
         libft/ft_isdigit.c
-        libft/ft_isspace)
+        libft/ft_isspace
+        outline.c)
