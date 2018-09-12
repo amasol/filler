@@ -19,15 +19,20 @@ void			zero_out(t_fl *inf)
 	inf->map_y = 0;
 	inf->pic_y = 0;
 	inf->pic_x = 0;
+	inf->mites = 0;
+	inf->end_y = 0;
+	inf->end_x = 0;
 }
 
-int				parsing(t_fl *inf)
+int				parsing(t_fl *inf) // функия в которой я начинаю парсить карту
 {
-	pars_line(inf);
-	pars_map_xy(inf);
-	save_map(inf);
-	pars_figure_xy(inf);
-	pars_figure(inf);
+	pars_line(inf); // узнаю кто какой игрок
+	pars_map_xy(inf); // записываю размеры нашей карты
+	save_map(inf);	// сохраняю карту в масив
+	pars_figure_xy(inf); // записываю кординаты нашей фигуры X Y
+	pars_figure(inf); // хохраняю нашую фигуру в масив
+	matrix(inf);	// создагие матрицы ходов
+	territory(inf); // определение оптимального хода к противнику
 
 	return (1);
 }
@@ -38,11 +43,11 @@ int				pars_line(t_fl *inf)
 	if (get_next_line(inf->fd, &inf->len) > 0)
 	{
 		if (*(inf->len + 10) == '1')
-			inf->my_o = 'O';
+			inf->my_bot = 'O';
 		else
-			inf->bot_x = 'X';
-		if (inf->my_o == 'O')
-			inf->bot_x = 'X';
+			inf->bot_enemy = 'X';
+		if (inf->my_bot == 'O')
+			inf->bot_enemy = 'X';
 	}
 	free(inf->len);
 	return (1);
