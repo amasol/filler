@@ -1,23 +1,29 @@
-cmake_minimum_required(VERSION 3.9)
-project(filler_git C)
+cmake_minimum_required(VERSION 3.7)
+project(filler_new)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(filler_git main.c
-        filler.h
+set(SOURCE_FILES main.c)
+add_executable(filler_new ${SOURCE_FILES}
+        outline.c
+        ft_supportive.c
         ft_parsing.c
-        libft/get_next_line.c
-        libft/get_next_line.h
-        libft/ft_strchr.c
-        libft/ft_strdel.c
-        libft/ft_strdup.c
-        libft/ft_strjoin.c
-        libft/ft_strlen.c
-        libft/ft_strnew.c
-        libft/ft_bzero.c
-        libft/ft_strsub.c
+        main.c
+        outline_and_stroke.c
         libft/ft_atoi.c
         libft/ft_isdigit.c
-        libft/ft_isspace
-        outline.c
-        outline_and_stroke.c)
+        libft/ft_memalloc.c
+        libft/ft_bzero.c
+        libft/ft_putchar.c
+        libft/ft_putnbr.c
+        libft/ft_strdup.c
+        libft/ft_strsub.c
+        libft/ft_strsplit.c
+        libft/ft_strlen.c
+        libft/get_next_line.c
+        libft/ft_strchr.c
+        libft/ft_strcpy.c
+        libft/ft_strjoin.c
+        libft/ft_strnew.c
+        libft/ft_strcat.c
+        libft/ft_strncpy.c)

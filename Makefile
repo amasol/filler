@@ -1,19 +1,11 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: amasol <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/09/07 12:48:51 by amasol            #+#    #+#              #
-#    Updated: 2018/09/07 12:48:52 by amasol           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 
 NAME = filler
 
-SRC = main.c ft_parsing.c outline.c outline_and_stroke.c
+SRC = main.c\
+	  ft_parsing.c\
+	  outline.c\
+	  outline_and_stroke.c\
+	  ft_supportive.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -26,7 +18,7 @@ $(NAME): $(OBJ)
 	gcc $(CFLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
 %.o: ./%.c
-	gcc -o $@ -c $<
+	gcc $(CFLAGS) -o $@ -c $<
 
 clean:
 	make clean -C ./libft

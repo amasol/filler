@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 16:32:29 by amasol            #+#    #+#             */
-/*   Updated: 2017/11/10 14:17:33 by amasol           ###   ########.fr       */
+/*   Created: 2016/11/24 12:54:37 by klut              #+#    #+#             */
+/*   Updated: 2016/12/03 13:49:34 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	char *ptr;
 
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
+	ptr = (char *)s;
+	while (n-- > 0)
+		*ptr++ = '\0';
+	return (s);
 }

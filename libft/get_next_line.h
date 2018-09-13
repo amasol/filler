@@ -3,36 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/22 17:36:24 by amasol            #+#    #+#             */
-/*   Updated: 2018/03/15 16:14:39 by amasol           ###   ########.fr       */
+/*   Created: 2017/08/14 14:56:17 by klut              #+#    #+#             */
+/*   Updated: 2017/10/11 15:11:14 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
+#ifndef GET_NEXT_LINE_GET_NEXT_LINE_H
+# define GET_NEXT_LINE_GET_NEXT_LINE_H
+# define BUFF_SIZE 8
 # include "libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <fcntl.h>
+# include <limits.h>
 
-# define BUFF_SIZE 20
-
-typedef struct		s_str
+typedef struct				s_gnl_node
 {
-	int				fd;
-	char			data[BUFF_SIZE + 1];
-	char			*buff;
-	struct s_str	*next;
-}					t_str;
+	struct s_gnl_node		*next;
+	int						file_descr;
+	char					*inf;
+}							t_gnl_node;
 
-typedef struct		s_help
-{
-	int				j;
-	int				i;
-	char			*tmp;
-	int				len;
-}					t_help;
-
-int					get_next_line(const int fd, char **line);
+int							get_next_line(const int fd, char **line);
 
 #endif

@@ -3,60 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 13:21:32 by amasol            #+#    #+#             */
-/*   Updated: 2017/11/24 20:03:34 by amasol           ###   ########.fr       */
+/*   Created: 2016/12/19 13:20:20 by klut              #+#    #+#             */
+/*   Updated: 2016/12/20 18:37:02 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
+#include <stdlib.h>
 
-static	int		cou(int n)
+static	int		ft_digitcounter(int n)
 {
-	int i;
+	int		dc;
 
-	i = 0;
-	i = (n == 0) ? 1 : 0;
-	while (n != 0)
+	dc = 1;
+	while (n / 10 != 0)
 	{
 		n = n / 10;
-		i++;
+		dc++;
 	}
-	return (i);
+	if (n < 0)
+		dc++;
+	return (dc);
 }
 
-static	void	filling(char *str, long int n, size_t l)
+static	int		ft_flag(int n)
 {
+	int flag;
+
+	flag = 1;
 	if (n < 0)
-	{
-		str[0] = '-';
-		str[l + 1] = '\0';
-		str = str + l;
-		n = -n;
-	}
-	else
-	{
-		str[l] = '\0';
-		str = str + l - 1;
-	}
-	while (l--)
-	{
-		*str-- = ('0' + n % 10);
-		n = n / 10;
-	}
+		flag = -flag;
+	return (flag);
 }
 
 char			*ft_itoa(int n)
 {
 	char	*str;
-	int		len;
+	int		i;
+	int		stop;
+	int		size;
 
-	len = cou(n);
-	if (n < 0 && (!(str = ft_memalloc(sizeof(char) * len + 2))))
+	stop = 0;
+	size = ft_digitcounter(n);
+	if (!(str = ft_strnew(size)))
 		return (NULL);
-	if (n >= 0 && (!(str = ft_memalloc(sizeof(char) * len + 1))))
-		return (NULL);
-	filling(str, n, len);
+	i = ft_digitcounter(n);
+	if (ft_flag(n) == -1)
+		str[0] = '-';
+	if (n < 0)
+		stop = 1;
+	while (--size >= stop)
+	{
+		if (n >= 0)
+			str[size] = n % 10 + '0';
+		else
+			str[size] = '0' - n % 10;
+		n = n / 10;
+	}
 	return (str);
 }

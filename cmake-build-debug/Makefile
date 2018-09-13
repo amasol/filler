@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/amasol/amasol/project/filler_git
+CMAKE_SOURCE_DIR = /Users/amasol/amasol/project/paraha
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/amasol/amasol/project/filler_git/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/amasol/amasol/project/paraha/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/amasol/amasol/project/filler_git/cmake-build-debug/CMakeFiles /Users/amasol/amasol/project/filler_git/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/amasol/amasol/project/paraha/cmake-build-debug/CMakeFiles /Users/amasol/amasol/project/paraha/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/amasol/amasol/project/filler_git/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/amasol/amasol/project/paraha/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named filler_git
+# Target rules for targets named filler_new
 
 # Build rule for target.
-filler_git: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 filler_git
-.PHONY : filler_git
+filler_new: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 filler_new
+.PHONY : filler_new
 
 # fast build rule for target.
-filler_git/fast:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/build
-.PHONY : filler_git/fast
+filler_new/fast:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/build
+.PHONY : filler_new/fast
 
 ft_parsing.o: ft_parsing.c.o
 
@@ -129,7 +129,7 @@ ft_parsing.o: ft_parsing.c.o
 
 # target to build an object file
 ft_parsing.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/ft_parsing.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/ft_parsing.c.o
 .PHONY : ft_parsing.c.o
 
 ft_parsing.i: ft_parsing.c.i
@@ -138,7 +138,7 @@ ft_parsing.i: ft_parsing.c.i
 
 # target to preprocess a source file
 ft_parsing.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/ft_parsing.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/ft_parsing.c.i
 .PHONY : ft_parsing.c.i
 
 ft_parsing.s: ft_parsing.c.s
@@ -147,8 +147,35 @@ ft_parsing.s: ft_parsing.c.s
 
 # target to generate assembly for a file
 ft_parsing.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/ft_parsing.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/ft_parsing.c.s
 .PHONY : ft_parsing.c.s
+
+ft_supportive.o: ft_supportive.c.o
+
+.PHONY : ft_supportive.o
+
+# target to build an object file
+ft_supportive.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/ft_supportive.c.o
+.PHONY : ft_supportive.c.o
+
+ft_supportive.i: ft_supportive.c.i
+
+.PHONY : ft_supportive.i
+
+# target to preprocess a source file
+ft_supportive.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/ft_supportive.c.i
+.PHONY : ft_supportive.c.i
+
+ft_supportive.s: ft_supportive.c.s
+
+.PHONY : ft_supportive.s
+
+# target to generate assembly for a file
+ft_supportive.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/ft_supportive.c.s
+.PHONY : ft_supportive.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -156,7 +183,7 @@ libft/ft_atoi.o: libft/ft_atoi.c.o
 
 # target to build an object file
 libft/ft_atoi.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_atoi.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_atoi.c.o
 .PHONY : libft/ft_atoi.c.o
 
 libft/ft_atoi.i: libft/ft_atoi.c.i
@@ -165,7 +192,7 @@ libft/ft_atoi.i: libft/ft_atoi.c.i
 
 # target to preprocess a source file
 libft/ft_atoi.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_atoi.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_atoi.c.i
 .PHONY : libft/ft_atoi.c.i
 
 libft/ft_atoi.s: libft/ft_atoi.c.s
@@ -174,7 +201,7 @@ libft/ft_atoi.s: libft/ft_atoi.c.s
 
 # target to generate assembly for a file
 libft/ft_atoi.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_atoi.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_atoi.c.s
 .PHONY : libft/ft_atoi.c.s
 
 libft/ft_bzero.o: libft/ft_bzero.c.o
@@ -183,7 +210,7 @@ libft/ft_bzero.o: libft/ft_bzero.c.o
 
 # target to build an object file
 libft/ft_bzero.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_bzero.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_bzero.c.o
 .PHONY : libft/ft_bzero.c.o
 
 libft/ft_bzero.i: libft/ft_bzero.c.i
@@ -192,7 +219,7 @@ libft/ft_bzero.i: libft/ft_bzero.c.i
 
 # target to preprocess a source file
 libft/ft_bzero.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_bzero.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_bzero.c.i
 .PHONY : libft/ft_bzero.c.i
 
 libft/ft_bzero.s: libft/ft_bzero.c.s
@@ -201,7 +228,7 @@ libft/ft_bzero.s: libft/ft_bzero.c.s
 
 # target to generate assembly for a file
 libft/ft_bzero.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_bzero.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_bzero.c.s
 .PHONY : libft/ft_bzero.c.s
 
 libft/ft_isdigit.o: libft/ft_isdigit.c.o
@@ -210,7 +237,7 @@ libft/ft_isdigit.o: libft/ft_isdigit.c.o
 
 # target to build an object file
 libft/ft_isdigit.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_isdigit.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_isdigit.c.o
 .PHONY : libft/ft_isdigit.c.o
 
 libft/ft_isdigit.i: libft/ft_isdigit.c.i
@@ -219,7 +246,7 @@ libft/ft_isdigit.i: libft/ft_isdigit.c.i
 
 # target to preprocess a source file
 libft/ft_isdigit.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_isdigit.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_isdigit.c.i
 .PHONY : libft/ft_isdigit.c.i
 
 libft/ft_isdigit.s: libft/ft_isdigit.c.s
@@ -228,35 +255,116 @@ libft/ft_isdigit.s: libft/ft_isdigit.c.s
 
 # target to generate assembly for a file
 libft/ft_isdigit.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_isdigit.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_isdigit.c.s
 .PHONY : libft/ft_isdigit.c.s
 
-libft/ft_isspace.o: libft/ft_isspace.c.o
+libft/ft_memalloc.o: libft/ft_memalloc.c.o
 
-.PHONY : libft/ft_isspace.o
+.PHONY : libft/ft_memalloc.o
 
 # target to build an object file
-libft/ft_isspace.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_isspace.c.o
-.PHONY : libft/ft_isspace.c.o
+libft/ft_memalloc.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_memalloc.c.o
+.PHONY : libft/ft_memalloc.c.o
 
-libft/ft_isspace.i: libft/ft_isspace.c.i
+libft/ft_memalloc.i: libft/ft_memalloc.c.i
 
-.PHONY : libft/ft_isspace.i
+.PHONY : libft/ft_memalloc.i
 
 # target to preprocess a source file
-libft/ft_isspace.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_isspace.c.i
-.PHONY : libft/ft_isspace.c.i
+libft/ft_memalloc.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_memalloc.c.i
+.PHONY : libft/ft_memalloc.c.i
 
-libft/ft_isspace.s: libft/ft_isspace.c.s
+libft/ft_memalloc.s: libft/ft_memalloc.c.s
 
-.PHONY : libft/ft_isspace.s
+.PHONY : libft/ft_memalloc.s
 
 # target to generate assembly for a file
-libft/ft_isspace.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_isspace.c.s
-.PHONY : libft/ft_isspace.c.s
+libft/ft_memalloc.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_memalloc.c.s
+.PHONY : libft/ft_memalloc.c.s
+
+libft/ft_putchar.o: libft/ft_putchar.c.o
+
+.PHONY : libft/ft_putchar.o
+
+# target to build an object file
+libft/ft_putchar.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_putchar.c.o
+.PHONY : libft/ft_putchar.c.o
+
+libft/ft_putchar.i: libft/ft_putchar.c.i
+
+.PHONY : libft/ft_putchar.i
+
+# target to preprocess a source file
+libft/ft_putchar.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_putchar.c.i
+.PHONY : libft/ft_putchar.c.i
+
+libft/ft_putchar.s: libft/ft_putchar.c.s
+
+.PHONY : libft/ft_putchar.s
+
+# target to generate assembly for a file
+libft/ft_putchar.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_putchar.c.s
+.PHONY : libft/ft_putchar.c.s
+
+libft/ft_putnbr.o: libft/ft_putnbr.c.o
+
+.PHONY : libft/ft_putnbr.o
+
+# target to build an object file
+libft/ft_putnbr.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_putnbr.c.o
+.PHONY : libft/ft_putnbr.c.o
+
+libft/ft_putnbr.i: libft/ft_putnbr.c.i
+
+.PHONY : libft/ft_putnbr.i
+
+# target to preprocess a source file
+libft/ft_putnbr.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_putnbr.c.i
+.PHONY : libft/ft_putnbr.c.i
+
+libft/ft_putnbr.s: libft/ft_putnbr.c.s
+
+.PHONY : libft/ft_putnbr.s
+
+# target to generate assembly for a file
+libft/ft_putnbr.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_putnbr.c.s
+.PHONY : libft/ft_putnbr.c.s
+
+libft/ft_strcat.o: libft/ft_strcat.c.o
+
+.PHONY : libft/ft_strcat.o
+
+# target to build an object file
+libft/ft_strcat.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strcat.c.o
+.PHONY : libft/ft_strcat.c.o
+
+libft/ft_strcat.i: libft/ft_strcat.c.i
+
+.PHONY : libft/ft_strcat.i
+
+# target to preprocess a source file
+libft/ft_strcat.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strcat.c.i
+.PHONY : libft/ft_strcat.c.i
+
+libft/ft_strcat.s: libft/ft_strcat.c.s
+
+.PHONY : libft/ft_strcat.s
+
+# target to generate assembly for a file
+libft/ft_strcat.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strcat.c.s
+.PHONY : libft/ft_strcat.c.s
 
 libft/ft_strchr.o: libft/ft_strchr.c.o
 
@@ -264,7 +372,7 @@ libft/ft_strchr.o: libft/ft_strchr.c.o
 
 # target to build an object file
 libft/ft_strchr.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strchr.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strchr.c.o
 .PHONY : libft/ft_strchr.c.o
 
 libft/ft_strchr.i: libft/ft_strchr.c.i
@@ -273,7 +381,7 @@ libft/ft_strchr.i: libft/ft_strchr.c.i
 
 # target to preprocess a source file
 libft/ft_strchr.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strchr.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strchr.c.i
 .PHONY : libft/ft_strchr.c.i
 
 libft/ft_strchr.s: libft/ft_strchr.c.s
@@ -282,35 +390,35 @@ libft/ft_strchr.s: libft/ft_strchr.c.s
 
 # target to generate assembly for a file
 libft/ft_strchr.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strchr.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strchr.c.s
 .PHONY : libft/ft_strchr.c.s
 
-libft/ft_strdel.o: libft/ft_strdel.c.o
+libft/ft_strcpy.o: libft/ft_strcpy.c.o
 
-.PHONY : libft/ft_strdel.o
+.PHONY : libft/ft_strcpy.o
 
 # target to build an object file
-libft/ft_strdel.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strdel.c.o
-.PHONY : libft/ft_strdel.c.o
+libft/ft_strcpy.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strcpy.c.o
+.PHONY : libft/ft_strcpy.c.o
 
-libft/ft_strdel.i: libft/ft_strdel.c.i
+libft/ft_strcpy.i: libft/ft_strcpy.c.i
 
-.PHONY : libft/ft_strdel.i
+.PHONY : libft/ft_strcpy.i
 
 # target to preprocess a source file
-libft/ft_strdel.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strdel.c.i
-.PHONY : libft/ft_strdel.c.i
+libft/ft_strcpy.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strcpy.c.i
+.PHONY : libft/ft_strcpy.c.i
 
-libft/ft_strdel.s: libft/ft_strdel.c.s
+libft/ft_strcpy.s: libft/ft_strcpy.c.s
 
-.PHONY : libft/ft_strdel.s
+.PHONY : libft/ft_strcpy.s
 
 # target to generate assembly for a file
-libft/ft_strdel.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strdel.c.s
-.PHONY : libft/ft_strdel.c.s
+libft/ft_strcpy.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strcpy.c.s
+.PHONY : libft/ft_strcpy.c.s
 
 libft/ft_strdup.o: libft/ft_strdup.c.o
 
@@ -318,7 +426,7 @@ libft/ft_strdup.o: libft/ft_strdup.c.o
 
 # target to build an object file
 libft/ft_strdup.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strdup.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strdup.c.o
 .PHONY : libft/ft_strdup.c.o
 
 libft/ft_strdup.i: libft/ft_strdup.c.i
@@ -327,7 +435,7 @@ libft/ft_strdup.i: libft/ft_strdup.c.i
 
 # target to preprocess a source file
 libft/ft_strdup.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strdup.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strdup.c.i
 .PHONY : libft/ft_strdup.c.i
 
 libft/ft_strdup.s: libft/ft_strdup.c.s
@@ -336,7 +444,7 @@ libft/ft_strdup.s: libft/ft_strdup.c.s
 
 # target to generate assembly for a file
 libft/ft_strdup.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strdup.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strdup.c.s
 .PHONY : libft/ft_strdup.c.s
 
 libft/ft_strjoin.o: libft/ft_strjoin.c.o
@@ -345,7 +453,7 @@ libft/ft_strjoin.o: libft/ft_strjoin.c.o
 
 # target to build an object file
 libft/ft_strjoin.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strjoin.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strjoin.c.o
 .PHONY : libft/ft_strjoin.c.o
 
 libft/ft_strjoin.i: libft/ft_strjoin.c.i
@@ -354,7 +462,7 @@ libft/ft_strjoin.i: libft/ft_strjoin.c.i
 
 # target to preprocess a source file
 libft/ft_strjoin.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strjoin.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strjoin.c.i
 .PHONY : libft/ft_strjoin.c.i
 
 libft/ft_strjoin.s: libft/ft_strjoin.c.s
@@ -363,7 +471,7 @@ libft/ft_strjoin.s: libft/ft_strjoin.c.s
 
 # target to generate assembly for a file
 libft/ft_strjoin.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strjoin.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strjoin.c.s
 .PHONY : libft/ft_strjoin.c.s
 
 libft/ft_strlen.o: libft/ft_strlen.c.o
@@ -372,7 +480,7 @@ libft/ft_strlen.o: libft/ft_strlen.c.o
 
 # target to build an object file
 libft/ft_strlen.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strlen.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strlen.c.o
 .PHONY : libft/ft_strlen.c.o
 
 libft/ft_strlen.i: libft/ft_strlen.c.i
@@ -381,7 +489,7 @@ libft/ft_strlen.i: libft/ft_strlen.c.i
 
 # target to preprocess a source file
 libft/ft_strlen.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strlen.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strlen.c.i
 .PHONY : libft/ft_strlen.c.i
 
 libft/ft_strlen.s: libft/ft_strlen.c.s
@@ -390,8 +498,35 @@ libft/ft_strlen.s: libft/ft_strlen.c.s
 
 # target to generate assembly for a file
 libft/ft_strlen.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strlen.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strlen.c.s
 .PHONY : libft/ft_strlen.c.s
+
+libft/ft_strncpy.o: libft/ft_strncpy.c.o
+
+.PHONY : libft/ft_strncpy.o
+
+# target to build an object file
+libft/ft_strncpy.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strncpy.c.o
+.PHONY : libft/ft_strncpy.c.o
+
+libft/ft_strncpy.i: libft/ft_strncpy.c.i
+
+.PHONY : libft/ft_strncpy.i
+
+# target to preprocess a source file
+libft/ft_strncpy.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strncpy.c.i
+.PHONY : libft/ft_strncpy.c.i
+
+libft/ft_strncpy.s: libft/ft_strncpy.c.s
+
+.PHONY : libft/ft_strncpy.s
+
+# target to generate assembly for a file
+libft/ft_strncpy.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strncpy.c.s
+.PHONY : libft/ft_strncpy.c.s
 
 libft/ft_strnew.o: libft/ft_strnew.c.o
 
@@ -399,7 +534,7 @@ libft/ft_strnew.o: libft/ft_strnew.c.o
 
 # target to build an object file
 libft/ft_strnew.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strnew.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strnew.c.o
 .PHONY : libft/ft_strnew.c.o
 
 libft/ft_strnew.i: libft/ft_strnew.c.i
@@ -408,7 +543,7 @@ libft/ft_strnew.i: libft/ft_strnew.c.i
 
 # target to preprocess a source file
 libft/ft_strnew.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strnew.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strnew.c.i
 .PHONY : libft/ft_strnew.c.i
 
 libft/ft_strnew.s: libft/ft_strnew.c.s
@@ -417,8 +552,35 @@ libft/ft_strnew.s: libft/ft_strnew.c.s
 
 # target to generate assembly for a file
 libft/ft_strnew.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strnew.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strnew.c.s
 .PHONY : libft/ft_strnew.c.s
+
+libft/ft_strsplit.o: libft/ft_strsplit.c.o
+
+.PHONY : libft/ft_strsplit.o
+
+# target to build an object file
+libft/ft_strsplit.c.o:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strsplit.c.o
+.PHONY : libft/ft_strsplit.c.o
+
+libft/ft_strsplit.i: libft/ft_strsplit.c.i
+
+.PHONY : libft/ft_strsplit.i
+
+# target to preprocess a source file
+libft/ft_strsplit.c.i:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strsplit.c.i
+.PHONY : libft/ft_strsplit.c.i
+
+libft/ft_strsplit.s: libft/ft_strsplit.c.s
+
+.PHONY : libft/ft_strsplit.s
+
+# target to generate assembly for a file
+libft/ft_strsplit.c.s:
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strsplit.c.s
+.PHONY : libft/ft_strsplit.c.s
 
 libft/ft_strsub.o: libft/ft_strsub.c.o
 
@@ -426,7 +588,7 @@ libft/ft_strsub.o: libft/ft_strsub.c.o
 
 # target to build an object file
 libft/ft_strsub.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strsub.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strsub.c.o
 .PHONY : libft/ft_strsub.c.o
 
 libft/ft_strsub.i: libft/ft_strsub.c.i
@@ -435,7 +597,7 @@ libft/ft_strsub.i: libft/ft_strsub.c.i
 
 # target to preprocess a source file
 libft/ft_strsub.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strsub.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strsub.c.i
 .PHONY : libft/ft_strsub.c.i
 
 libft/ft_strsub.s: libft/ft_strsub.c.s
@@ -444,7 +606,7 @@ libft/ft_strsub.s: libft/ft_strsub.c.s
 
 # target to generate assembly for a file
 libft/ft_strsub.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/ft_strsub.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/ft_strsub.c.s
 .PHONY : libft/ft_strsub.c.s
 
 libft/get_next_line.o: libft/get_next_line.c.o
@@ -453,7 +615,7 @@ libft/get_next_line.o: libft/get_next_line.c.o
 
 # target to build an object file
 libft/get_next_line.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/get_next_line.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/get_next_line.c.o
 .PHONY : libft/get_next_line.c.o
 
 libft/get_next_line.i: libft/get_next_line.c.i
@@ -462,7 +624,7 @@ libft/get_next_line.i: libft/get_next_line.c.i
 
 # target to preprocess a source file
 libft/get_next_line.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/get_next_line.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/get_next_line.c.i
 .PHONY : libft/get_next_line.c.i
 
 libft/get_next_line.s: libft/get_next_line.c.s
@@ -471,7 +633,7 @@ libft/get_next_line.s: libft/get_next_line.c.s
 
 # target to generate assembly for a file
 libft/get_next_line.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/libft/get_next_line.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/libft/get_next_line.c.s
 .PHONY : libft/get_next_line.c.s
 
 main.o: main.c.o
@@ -480,7 +642,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/main.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -489,7 +651,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/main.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -498,7 +660,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/main.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/main.c.s
 .PHONY : main.c.s
 
 outline.o: outline.c.o
@@ -507,7 +669,7 @@ outline.o: outline.c.o
 
 # target to build an object file
 outline.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/outline.c.o
 .PHONY : outline.c.o
 
 outline.i: outline.c.i
@@ -516,7 +678,7 @@ outline.i: outline.c.i
 
 # target to preprocess a source file
 outline.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/outline.c.i
 .PHONY : outline.c.i
 
 outline.s: outline.c.s
@@ -525,7 +687,7 @@ outline.s: outline.c.s
 
 # target to generate assembly for a file
 outline.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/outline.c.s
 .PHONY : outline.c.s
 
 outline_and_stroke.o: outline_and_stroke.c.o
@@ -534,7 +696,7 @@ outline_and_stroke.o: outline_and_stroke.c.o
 
 # target to build an object file
 outline_and_stroke.c.o:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline_and_stroke.c.o
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/outline_and_stroke.c.o
 .PHONY : outline_and_stroke.c.o
 
 outline_and_stroke.i: outline_and_stroke.c.i
@@ -543,7 +705,7 @@ outline_and_stroke.i: outline_and_stroke.c.i
 
 # target to preprocess a source file
 outline_and_stroke.c.i:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline_and_stroke.c.i
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/outline_and_stroke.c.i
 .PHONY : outline_and_stroke.c.i
 
 outline_and_stroke.s: outline_and_stroke.c.s
@@ -552,7 +714,7 @@ outline_and_stroke.s: outline_and_stroke.c.s
 
 # target to generate assembly for a file
 outline_and_stroke.c.s:
-	$(MAKE) -f CMakeFiles/filler_git.dir/build.make CMakeFiles/filler_git.dir/outline_and_stroke.c.s
+	$(MAKE) -f CMakeFiles/filler_new.dir/build.make CMakeFiles/filler_new.dir/outline_and_stroke.c.s
 .PHONY : outline_and_stroke.c.s
 
 # Help Target
@@ -563,10 +725,13 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... filler_git"
+	@echo "... filler_new"
 	@echo "... ft_parsing.o"
 	@echo "... ft_parsing.i"
 	@echo "... ft_parsing.s"
+	@echo "... ft_supportive.o"
+	@echo "... ft_supportive.i"
+	@echo "... ft_supportive.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
@@ -576,15 +741,24 @@ help:
 	@echo "... libft/ft_isdigit.o"
 	@echo "... libft/ft_isdigit.i"
 	@echo "... libft/ft_isdigit.s"
-	@echo "... libft/ft_isspace.o"
-	@echo "... libft/ft_isspace.i"
-	@echo "... libft/ft_isspace.s"
+	@echo "... libft/ft_memalloc.o"
+	@echo "... libft/ft_memalloc.i"
+	@echo "... libft/ft_memalloc.s"
+	@echo "... libft/ft_putchar.o"
+	@echo "... libft/ft_putchar.i"
+	@echo "... libft/ft_putchar.s"
+	@echo "... libft/ft_putnbr.o"
+	@echo "... libft/ft_putnbr.i"
+	@echo "... libft/ft_putnbr.s"
+	@echo "... libft/ft_strcat.o"
+	@echo "... libft/ft_strcat.i"
+	@echo "... libft/ft_strcat.s"
 	@echo "... libft/ft_strchr.o"
 	@echo "... libft/ft_strchr.i"
 	@echo "... libft/ft_strchr.s"
-	@echo "... libft/ft_strdel.o"
-	@echo "... libft/ft_strdel.i"
-	@echo "... libft/ft_strdel.s"
+	@echo "... libft/ft_strcpy.o"
+	@echo "... libft/ft_strcpy.i"
+	@echo "... libft/ft_strcpy.s"
 	@echo "... libft/ft_strdup.o"
 	@echo "... libft/ft_strdup.i"
 	@echo "... libft/ft_strdup.s"
@@ -594,9 +768,15 @@ help:
 	@echo "... libft/ft_strlen.o"
 	@echo "... libft/ft_strlen.i"
 	@echo "... libft/ft_strlen.s"
+	@echo "... libft/ft_strncpy.o"
+	@echo "... libft/ft_strncpy.i"
+	@echo "... libft/ft_strncpy.s"
 	@echo "... libft/ft_strnew.o"
 	@echo "... libft/ft_strnew.i"
 	@echo "... libft/ft_strnew.s"
+	@echo "... libft/ft_strsplit.o"
+	@echo "... libft/ft_strsplit.i"
+	@echo "... libft/ft_strsplit.s"
 	@echo "... libft/ft_strsub.o"
 	@echo "... libft/ft_strsub.i"
 	@echo "... libft/ft_strsub.s"

@@ -1,56 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   outline.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/08 19:09:20 by amasol            #+#    #+#             */
-/*   Updated: 2018/09/08 19:09:21 by amasol           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "filler.h"
 
-int			pars_figure_xy(t_fl *inf)
+int		matrix(t_fl *inf)
 {
-	if (inf->len)
-	{
-		inf->pic_y = ft_atoi(inf->len + 6);
-		inf->pic_x = ft_atoi(inf->len + 8);
-		free(inf->len);
-	}
-	else
-		return (0);
-	return (1);
-}
-
-int			pars_figure(t_fl *inf)
-{
-	int i_fig_y;
-
-	i_fig_y = 0;
-	if (!(inf->figure = (char **)malloc(sizeof(char *) * (inf->pic_y + 1))))
-		return (0);
-	while (get_next_line(inf->fd, &inf->len) && i_fig_y < inf->pic_y)
-	{
-		inf->figure[i_fig_y] = ft_strsub(inf->len, 0, (size_t)inf->pic_x);
-		free(inf->len);
-		i_fig_y++;
-	}
-	return (1);
-}
-
-int			matrix(t_fl *inf)
-{
-	int wid;
 	int heig;
+	int wid;
 
 	if (!(inf->matrix = (int **)malloc(sizeof(int *) * (inf->map_y + 1))))
 		return (0);
-	heig = 0;
-	inf->map[inf->map_y + 1] = NULL;
+	inf->matrix[inf->map_y + 1] = NULL;
+	inf->end_y = -1;
+	inf->end_x = -1;
 	inf->mites = 9999;
+	heig = 0;
 	while (inf->map_y > heig)
 	{
 		wid = 0;
@@ -68,27 +30,27 @@ int			matrix(t_fl *inf)
 	return (1);
 }
 
-void		enemy_figure(t_fl *inf) //находим вражескую фигуру
+int		enemy_figure(t_fl *inf)
 {
-	inf->en_f_heig = 0;
-	while (inf->map_y > inf->en_f_heig)
+	inf->en_f_y = 0;
+	while (inf->map_y > inf->en_f_y)
 	{
-		inf->en_f_wid = 0;
-		while (inf->map_x > inf->en_f_wid)
+		inf->en_f_x = 0;
+		while (inf->map_x > inf->en_f_x)
 		{
-			if (inf->map[inf->en_f_heig][inf->en_f_wid] == inf->bot_enemy)
+			if (inf->map[inf->en_f_y][inf->en_f_x] == inf->bot_enemy)
 				distance(inf);
-			inf->en_f_wid++;
+			inf->en_f_x++;
 		}
-		inf->en_f_heig++;
+		inf->en_f_y ++;
 	}
+	return (1);
 }
 
-void		distance(t_fl *inf) // дистанцию
+int		distance(t_fl *inf)
 {
-	int distance;
+	int		distance;
 
-	distance = 0;
 	inf->dis_y = 0;
 	while (inf->map_y > inf->dis_y)
 	{
@@ -102,11 +64,27 @@ void		distance(t_fl *inf) // дистанцию
 			else
 			{
 				distance = dist_forml(inf);
-				if (distance > -1 && distance < inf->matrix[inf->dis_y][inf->dis_x])
+				if (inf->matrix[inf->dis_y][inf->dis_x]
+					> distance && distance > -1)
 					inf->matrix[inf->dis_y][inf->dis_x] = distance;
 			}
 			inf->dis_x++;
 		}
 		inf->dis_y++;
 	}
+	return (1);
+}
+
+int		dist_forml(t_fl * inf)
+{
+	int		distance;
+	int		distance2;
+
+	distance = (inf->dis_y - inf->en_f_y);
+	if (distance < 0)
+		distance *= -1;
+	distance2 = (inf->dis_x - inf->en_f_x);
+	if (distance2 < 0)
+		distance2 *= -1;
+	return (distance + distance2);
 }

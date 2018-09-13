@@ -1,53 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   outline_and_stroke.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/12 16:32:49 by amasol            #+#    #+#             */
-/*   Updated: 2018/09/12 16:32:53 by amasol           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "filler.h"
 
-int			dist_forml(t_fl *inf)
+int		territory(t_fl *inf)
 {
-	int dest;
-	int dest_two;
-	int dest_three;
-
-	dest = 0;
-	dest_two = (inf->dis_y - inf->en_f_heig);
-	if (dest_two < 0)
-		dest_two *= -1;
-	dest_three = (inf->dis_x - inf->en_f_wid);
-	if (dest_three < 0)
-		dest_three *= -1;
-	return (dest_two + dest_three);
-}
-
-void	territory(t_fl *inf)
-{
-	int y;
-	int x;
+	int		y;
+	int		x;
 
 	y = 0;
-	while (y < inf->map_y - (inf->pic_y + 1))
+	while (inf->map_y - inf->pic_y + 1 > y)
 	{
 		x = 0;
-		while (x < inf->map_x - (inf->pic_x + 1))
+		while (inf->map_x - inf->pic_x + 1 > x)
 		{
-			if (valit_check(x, y, inf)) // можно ли поставить фигуру в данную точку
-				determ_course(x, y, inf); // определение оптимального хода
+			if (valid_check(inf, y, x))
+				determ_course(inf, y, x);
+			x++;
 		}
-		x++;
+		y++;
 	}
-	y++;
+	return (1);
 }
 
-int				valit_check(int ter_x, int ter_y, t_fl *inf)
+int		valid_check(t_fl *inf, int ter_y, int ter_x)
 {
 	int y;
 	int x;
@@ -63,7 +37,9 @@ int				valit_check(int ter_x, int ter_y, t_fl *inf)
 			if (inf->figure[y][x] == '*')
 			{
 				if (!(val_fig) && (inf->map[y + ter_y][x + ter_x] == inf->my_bot))
+				{
 					val_fig = 1;
+				}
 				else if (inf->map[ter_y + y][ter_x + x] != '.')
 					return (0);
 			}
@@ -74,11 +50,11 @@ int				valit_check(int ter_x, int ter_y, t_fl *inf)
 	return ((val_fig) ? 1 : 0);
 }
 
-void			determ_course(int x, int y, t_fl *inf)
+void	determ_course(t_fl *inf, int h, int w)
 {
 	int dc_y;
 	int dc_x;
-	int opt_turn;
+	int	opt_turn;
 
 	dc_x = 0;
 	opt_turn = 0;
@@ -88,21 +64,31 @@ void			determ_course(int x, int y, t_fl *inf)
 		while (dc_y < inf->pic_y)
 		{
 			if (inf->figure[dc_y][dc_x] == '*')
-				opt_turn += (inf->matrix[dc_y + y][dc_x + x]);
+			{
+				opt_turn += (inf->matrix)[dc_y + h][dc_x + w];
+			}
 			dc_y++;
 		}
 		dc_x++;
 	}
-	put(inf, opt_turn, dc_y, dc_y);
+	ft_final_decision(inf, opt_turn, h, w);
 }
 
-int 		put(t_fl *inf, int optimal, int y, int x)
+int		ft_final_decision(t_fl *inf, int optimal, int h, int w)
 {
-	if (optimal < inf->mites)
+	if (inf->mites > optimal)
 	{
+		inf->end_y = h;
+		inf->end_x = w;
 		inf->mites = optimal;
-		inf->end_y = y;
-		inf->end_x = x;
 	}
-	return (0);
+	return (1);
+}
+
+void	ft_output(t_fl *inf)
+{
+	ft_putnbr(inf->end_y);
+	write(1, " ", 1);
+	ft_putnbr(inf->end_x);
+	write(1, "\n", 1);
 }

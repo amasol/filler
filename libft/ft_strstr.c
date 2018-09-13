@@ -3,37 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/01 15:28:40 by amasol            #+#    #+#             */
-/*   Updated: 2017/11/13 20:01:04 by amasol           ###   ########.fr       */
+/*   Created: 2016/12/18 10:41:04 by klut              #+#    #+#             */
+/*   Updated: 2016/12/20 15:54:39 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-char	*ft_strstr(const char *str, const char *rts)
+char	*ft_strstr(const char *str, const char *substr)
 {
-	size_t	tak;
+	char	*a;
+	char	*b;
 	size_t	i;
 	size_t	j;
 
+	a = (char *)str;
+	b = (char *)substr;
 	i = 0;
-	if (rts[i] == '\0')
+	j = 0;
+	if (b[i] == '\0')
 		return ((char *)str);
-	while (str[i])
+	while (a[i] != '\0')
 	{
-		j = 0;
-		tak = i;
-		while (str[i] == rts[j])
+		while (a[i + j] == b[j])
 		{
-			i++;
 			j++;
-			if (!rts[j])
-				return ((char *)&str[tak]);
+			if (b[j] == '\0')
+				return (&a[i]);
 		}
-		i = tak;
+		j = 0;
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

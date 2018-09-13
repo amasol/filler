@@ -3,40 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 10:10:04 by amasol            #+#    #+#             */
-/*   Updated: 2017/11/24 20:16:28 by amasol           ###   ########.fr       */
+/*   Created: 2016/12/19 17:42:17 by klut              #+#    #+#             */
+/*   Updated: 2016/12/20 18:31:30 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-char	*ft_strtrim(char const *s)
+static	int		ft_spacess(char const *s)
 {
-	char	*str;
-	int		st;
+	int	i;
+	int	q;
+	int	j;
+
+	i = 0;
+	q = 0;
+	j = (int)ft_strlen(s) - 1;
+	while (s[q] == ' ' || s[q] == '\n' || s[q] == '\t')
+	{
+		i++;
+		q++;
+		if (s[q] == '\0')
+			return (i);
+	}
+	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+	{
+		i++;
+		j--;
+	}
+	return (i);
+}
+
+static	int		ft_counter(char const *s)
+{
+	int	q;
+
+	q = 0;
+	while (s[q] == ' ' || s[q] == '\n' || s[q] == '\t')
+		q++;
+	return (q);
+}
+
+static	int		ft_rcounter(char const *s)
+{
+	int	j;
+
+	j = (int)ft_strlen(s) - 1;
+	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+	{
+		j--;
+	}
+	return (j);
+}
+
+char			*ft_strtrim(char const *s)
+{
+	char	*ptr;
 	int		i;
 	int		k;
+	int		q;
+	int		j;
 
-	if (s != '\0')
+	if (s == NULL)
+		return (0);
+	k = 0;
+	i = ft_spacess(s);
+	if (i == (int)ft_strlen(s))
+		return (ft_strnew(0));
+	q = ft_counter(s);
+	j = ft_rcounter(s);
+	ptr = (char *)malloc((int)ft_strlen(s) - i + 1);
+	if (ptr == NULL)
+		return (0);
+	while (q != j + 1)
 	{
-		i = 0;
-		st = ft_strlen(s) - 1;
-		while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
-			i++;
-		if (s[i] == '\0')
-			return (ft_strdup(""));
-		while (s[st] == ' ' || s[st] == '\t' || s[st] == '\n')
-			st--;
-		str = (char *)malloc(sizeof(char) * (st - i) + 2);
-		if (str == NULL)
-			return (NULL);
-		k = 0;
-		while (i <= st)
-			str[k++] = s[i++];
-		str[k] = '\0';
-		return (str);
+		ptr[k] = s[q];
+		q++;
+		k++;
 	}
-	return (0);
+	ptr[k] = '\0';
+	return (ptr);
 }

@@ -3,93 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/22 17:36:14 by amasol            #+#    #+#             */
-/*   Updated: 2018/04/11 21:28:35 by amasol           ###   ########.fr       */
+/*   Created: 2017/09/06 16:43:01 by klut              #+#    #+#             */
+/*   Updated: 2017/09/12 16:49:06 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int		ft_check_n(char **line, t_str **lst)
+static	t_gnl_node	*ft_lst_create(int fd)
 {
-	t_help r;
+	t_gnl_node					*file;
 
-	r.len = 0;
-	r.tmp = (*lst)->buff;
-	if ((*lst)->buff && !(r.i = 0))
+	file = (t_gnl_node *)malloc((sizeof(t_gnl_node)));
+	file->file_descr = fd;
+	file->inf = NULL;
+	file->next = NULL;
+	return (file);
+}
+
+static	t_gnl_node	*ft_lst_managment(int fd, t_gnl_node *ptr)
+{
+	while (ptr)
 	{
-		while ((*lst)->buff[r.i] && (*lst)->buff[r.i] != '\n')
-			r.i++;
-		r.j = 0;
-		if ((*lst)->buff[r.j] == '\n')
+		if (fd != ptr->file_descr)
 		{
-			*line = ft_strdup("\0");
-			(*lst)->buff = ft_strsub((*lst)->buff, r.i + 1,
-			ft_strlen((*lst)->buff) - r.i);
-			ft_strdel(&r.tmp);
-			return (1);
+			if (ptr->next == NULL)
+			{
+				ptr->next = ft_lst_create(fd);
+				return (ptr->next);
+			}
+			else
+				ptr = ptr->next;
 		}
 		else
-			*line = ft_strsub((*lst)->buff, 0, r.i);
-		(*lst)->buff = ft_strsub((*lst)->buff, r.i + 1,
-		ft_strlen((*lst)->buff) - r.i);
-		ft_strdel(&r.tmp);
+			return (ptr);
 	}
-	r.len = ft_strlen(*line);
-	return ((r.len = r.len > 0 ? 1 : 0));
+	return (ptr);
 }
 
-static t_str	*ft_check_fd(t_str **memory, int fd)
+int					newline_finder(t_gnl_node *pf, char *buff, char **line,
+		int number)
 {
-	t_str *lst;
+	char						*position;
+	char						*ptr;
+	unsigned long				len;
 
-	if (!(*memory))
+	ptr = *line;
+	if (ft_strchr(buff, '\n'))
 	{
-		*memory = (t_str *)malloc(sizeof(t_str));
-		(*memory)->fd = fd;
-		(*memory)->buff = ft_strnew(0);
-		(*memory)->next = NULL;
+		position = ft_strchr(buff, '\n');
+		len = position - buff;
+		buff[len] = '\0';
+		position++;
+		*line = ft_strjoin(*line, buff);
+		if (ptr != NULL)
+			free(ptr);
+		pf->inf = ft_strdup(position);
+		return (1);
 	}
-	lst = *memory;
-	while (lst->fd != fd && lst->next)
-		lst = lst->next;
-	if (lst->fd != fd)
-	{
-		lst->next = (t_str *)malloc(sizeof(t_str));
-		lst = lst->next;
-		lst->fd = fd;
-		lst->next = NULL;
-		lst->buff = ft_strnew(0);
-	}
-	return (lst);
+	*line = ft_strjoin(*line, buff);
+	if (ptr != NULL)
+		free(ptr);
+	ft_bzero(buff, number);
+	return (0);
 }
 
-int				get_next_line(const int fd, char **line)
+int					main_sequence(t_gnl_node *pf, char **line, int fd,
+		char *buff)
 {
-	t_str			*lst;
-	static t_str	*memory;
-	char			*clean;
-	int				flag;
+	int number;
 
-	flag = 0;
-	if (fd < 0 || !line)
-		return (-1);
-	lst = ft_check_fd(&memory, fd);
-	if (read(lst->fd, lst->data, 0) < 0)
-		return (-1);
-	while ((flag = read(lst->fd, lst->data, BUFF_SIZE)) > 0)
+	*line = ft_strnew(1);
+	if (pf->inf != NULL)
 	{
-		lst->data[flag] = '\0';
-		clean = lst->buff;
-		lst->buff = ft_strjoin(lst->buff, lst->data);
-		ft_strdel(&clean);
-		if (lst->buff && ft_strchr(lst->buff, '\n'))
-			break ;
+		number = ft_strlen(pf->inf);
+		if (newline_finder(pf, pf->inf, line, number))
+			return (1);
 	}
-	if (lst->buff[0] == '\0')
+	while ((number = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[number] = '\0';
+		if (newline_finder(pf, buff, line, number))
+			return (1);
+	}
+	if (number == 0 && ft_strlen(*line) == 0)
 		return (0);
-	flag = ft_check_n(line, &lst);
-	return (flag);
+	return (1);
+}
+
+int					get_next_line(const int fd, char **line)
+{
+	static	t_gnl_node			*primary_node;
+	t_gnl_node					*temporary_node;
+	char						array_buffer[BUFF_SIZE + 1];
+
+	if ((fd < 0 || BUFF_SIZE < 1 || line == NULL
+				|| read(fd, array_buffer, 0) < 0) || fd > OPEN_MAX)
+		return (-1);
+	while (primary_node)
+	{
+		temporary_node = ft_lst_managment(fd, primary_node);
+		return (main_sequence(temporary_node, line, fd, array_buffer));
+	}
+	if (!primary_node)
+		primary_node = ft_lst_create(fd);
+	return (main_sequence(primary_node, line, fd, array_buffer));
 }

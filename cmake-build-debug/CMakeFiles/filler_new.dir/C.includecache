@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/amasol/amasol/project/paraha/coordinates.c
+filler.h
+/Users/amasol/amasol/project/paraha/filler.h
+stdio.h
+-
+
+/Users/amasol/amasol/project/paraha/filler.h
+libft/libft.h
+/Users/amasol/amasol/project/paraha/libft/libft.h
+stdio.h
+-
+
+/Users/amasol/amasol/project/paraha/libft/get_next_line.h
+libft.h
+/Users/amasol/amasol/project/paraha/libft/libft.h
+unistd.h
+-
+stdlib.h
+-
+string.h
+-
+fcntl.h
+-
+limits.h
+-
+
+/Users/amasol/amasol/project/paraha/libft/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+get_next_line.h
+/Users/amasol/amasol/project/paraha/libft/get_next_line.h
+

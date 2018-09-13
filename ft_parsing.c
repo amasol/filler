@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_parsing.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/07 13:15:06 by amasol            #+#    #+#             */
-/*   Updated: 2018/09/07 13:15:07 by amasol           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "filler.h"
 
 void			zero_out(t_fl *inf)
 {
-	inf->fd = 0;
 	inf->map_x = 0;
 	inf->map_y = 0;
 	inf->pic_y = 0;
@@ -24,62 +12,82 @@ void			zero_out(t_fl *inf)
 	inf->end_x = 0;
 }
 
-int				parsing(t_fl *inf) // функия в которой я начинаю парсить карту
+void	pars_line(t_fl*inf)
 {
-	pars_line(inf); // узнаю кто какой игрок
-	pars_map_xy(inf); // записываю размеры нашей карты
-	save_map(inf);	// сохраняю карту в масив
-	pars_figure_xy(inf); // записываю кординаты нашей фигуры X Y
-	pars_figure(inf); // хохраняю нашую фигуру в масив
-	matrix(inf);	// создагие матрицы ходов
-	territory(inf); // определение оптимального хода к противнику
-
-	return (1);
-}
-
-int				pars_line(t_fl *inf)
-{
-	inf->fd = open("test", O_RDONLY);
-	if (get_next_line(inf->fd, &inf->len) > 0)
+	//	inf->fd = open("test", O_RDONLY);
+	if (get_next_line(0, &(inf->line)) > 0)
 	{
-		if (*(inf->len + 10) == '1')
+		if (*(inf->line + 10) == '1')
 			inf->my_bot = 'O';
 		else
-			inf->bot_enemy = 'X';
+			inf->my_bot = 'X';
 		if (inf->my_bot == 'O')
 			inf->bot_enemy = 'X';
+		else
+			inf->bot_enemy = 'O';
 	}
-	free(inf->len);
-	return (1);
+	free(inf->line);
+	pars_map_xy(inf);
 }
 
-int				pars_map_xy(t_fl *inf)
+int		pars_map_xy(t_fl *inf)
 {
-	if (get_next_line(inf->fd, &inf->len) > 0)
+	if (get_next_line(0, &(inf->line)) > 0)
 	{
-		inf->map_y = ft_atoi(inf->len + 8);
-		inf->map_x = ft_atoi(inf->len + 10);
-		free(inf->len);
+		inf->map_y = ft_atoi(inf->line + 8);
+		inf->map_x = ft_atoi(inf->line + 10);
+		free(inf->line);
 	}
 	else
 		return (0);
+	save_map(inf);
 	return (1);
 }
 
-int				save_map(t_fl *inf)
+int		save_map(t_fl *inf)
 {
-	int i_map_y;
+	int		i_map_y;
 
-	i_map_y -= 1;
-	get_next_line(inf->fd, &inf->len);
-	free(inf->len);
+	i_map_y = 0;
+	get_next_line(0, &inf->line);
+	free(inf->line);
 	if (!(inf->map = (char **)malloc(sizeof(char *) * (inf->map_y + 1))))
 		return (0);
-	while (get_next_line(inf->fd, &inf->len) && i_map_y < inf->map_y)
+	while (get_next_line(0, &(inf->line)) && i_map_y < inf->map_y)
 	{
-		inf->map[i_map_y] = ft_strsub(inf->len, 4, (size_t)inf->map_x);
-		free(inf->len);
+		inf->map[i_map_y] = ft_strsub(inf->line, 4, (size_t)inf->map_x);
+		free(inf->line);
 		i_map_y++;
+	}
+	pars_figure_xy(inf);
+	return (1);
+}
+//
+int		pars_figure_xy(t_fl *inf)
+{
+	if (inf->line)
+	{
+		inf->pic_y = ft_atoi(inf->line + 6);
+		inf->pic_x = ft_atoi(inf->line + 8);
+		free(inf->line);
+	}
+	pars_figure(inf);
+	return (1);
+}
+
+//
+
+int			pars_figure(t_fl *inf)
+{
+	int i_fig_y;
+
+	if (!(inf->figure = (char **)malloc(sizeof(char *) * (inf->pic_y + 1))))
+		return (0);
+	i_fig_y = -1;
+	while (++i_fig_y < inf->pic_y && get_next_line(0, &inf->line))
+	{
+		inf->figure[i_fig_y] = ft_strdup(inf->line);
+		free(inf->line);
 	}
 	return (1);
 }
