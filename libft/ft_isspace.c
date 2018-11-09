@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/26 12:59:58 by amasol            #+#    #+#             */
-/*   Updated: 2017/11/26 12:59:59 by amasol           ###   ########.fr       */
+/*   Created: 2017/11/13 21:00:35 by amasol            #+#    #+#             */
+/*   Updated: 2017/11/13 21:03:34 by amasol           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstadd(t_list **alst, t_list *new)
+int		ft_isspace(int c)
 {
-	if (!alst && !new)
-		return ;
-	new->next = *alst;
-	*alst = new;
-	return ;
+	if (c == '\t' ||
+		c == '\n' ||
+		c == '\v' ||
+		c == '\f' ||
+		c == '\r' ||
+		c == ' ')
+		return (1);
+	return (0);
 }

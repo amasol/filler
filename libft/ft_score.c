@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_supportive.c                                    :+:      :+:    :+:   */
+/*   ft_score.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/14 14:24:29 by amasol            #+#    #+#             */
-/*   Updated: 2018/09/14 14:24:30 by amasol           ###   ########.fr       */
+/*   Created: 2017/11/27 16:43:09 by amasol            #+#    #+#             */
+/*   Updated: 2017/11/27 16:43:16 by amasol           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
-
-int		ft_refreshers(t_fl *inf)
+int		ft_score(char const *str, char c)
 {
-	int y;
+	int i;
+	int shet;
 
-	y = 0;
-	while (inf->pic_y > y)
+	i = 0;
+	shet = 0;
+	while (str[i])
 	{
-		free(inf->figure[y]);
-		y++;
+		while (str[i] == c)
+			i++;
+		if (str[i] != c && str[i] != '\0')
+			shet++;
+		while (str[i] != c && str[i] != '\0')
+			i++;
 	}
-	free(inf->figure);
-	return (1);
-}
-
-int		dist_forml(t_fl *inf)
-{
-	int	distance;
-	int	distance2;
-
-	distance = (inf->dis_y - inf->en_f_y);
-	if (distance < 0)
-		distance *= -1;
-	distance2 = (inf->dis_x - inf->en_f_x);
-	if (distance2 < 0)
-		distance2 *= -1;
-	return (distance + distance2);
+	return (shet);
 }

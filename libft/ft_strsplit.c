@@ -3,58 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/20 14:29:25 by klut              #+#    #+#             */
-/*   Updated: 2016/12/20 18:32:00 by klut             ###   ########.fr       */
+/*   Created: 2017/11/08 18:06:32 by amasol            #+#    #+#             */
+/*   Updated: 2017/11/24 20:15:43 by amasol           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static	int		ft_words(char const *str, char c)
+static int		f_characters(char const *str, char c)
 {
-	int	i;
-	int	num;
+	int i;
 
 	i = 0;
-	num = 0;
-	if (!str)
-		return (0);
-	while (str[i])
+	while (*str == c)
+		str++;
+	while (*str != c && *str != '\0')
 	{
-		if (str[i] != c && (str[i + 1] == c || str[i + 1] == '\0'))
-			num++;
 		i++;
+		str++;
 	}
-	return (num);
+	return (i);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
+	char	**str;
 	int		i;
-	int		j;
-	int		start;
-	char	**res;
+	size_t	j;
+	size_t	k;
 
-	i = 0;
+	if (!s || !(str = (char **)malloc(sizeof(*str) *
+		(ft_score(s, c) + 1))))
+		return (NULL);
+	i = -1;
 	j = 0;
-	if (s == NULL)
-		return (NULL);
-	if ((res = (char**)malloc(sizeof(char*) * (ft_words(s, c) + 1))) == NULL)
-		return (NULL);
-	while (s[i])
+	while (++i < ft_score(s, c))
 	{
-		if (i == 0 || (s[i] != c && s[i - 1] == c))
-			start = i;
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-		{
-			res[j] = ft_strsub(s, (unsigned int)start, (size_t)i - start + 1);
+		k = 0;
+		if (!(str[i] = ft_strnew(f_characters(&s[j], c) + 1)))
+			str[i] = NULL;
+		while (s[j] == c)
 			j++;
-		}
-		i++;
+		while (s[j] != c && s[j])
+			str[i][k++] = s[j++];
+		str[i][k] = '\0';
 	}
-	res[j] = NULL;
-	return (res);
+	str[i] = 0;
+	return (str);
 }

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   outline.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/14 14:25:25 by amasol            #+#    #+#             */
+/*   Updated: 2018/09/14 14:25:26 by amasol           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "filler.h"
 
@@ -6,17 +17,18 @@ int		matrix(t_fl *inf)
 	int heig;
 	int wid;
 
+	inf->end_y = -1;
+	inf->end_x = -1;
+	heig = 0;
+	inf->mites = 9999;
 	if (!(inf->matrix = (int **)malloc(sizeof(int *) * (inf->map_y + 1))))
 		return (0);
 	inf->matrix[inf->map_y + 1] = NULL;
-	inf->end_y = -1;
-	inf->end_x = -1;
-	inf->mites = 9999;
-	heig = 0;
 	while (inf->map_y > heig)
 	{
 		wid = 0;
-		if (!(inf->matrix[heig] = (int *)malloc(sizeof(int) * (inf->map_x + 1))))
+		if (!(inf->matrix[heig] =
+			(int *)malloc(sizeof(int) * (inf->map_x + 1))))
 			return (0);
 		inf->matrix[heig][inf->map_x + 1] = '\0';
 		while (inf->map_x > wid)
@@ -26,8 +38,7 @@ int		matrix(t_fl *inf)
 		}
 		heig++;
 	}
-	enemy_figure(inf);
-	return (1);
+	return (enemy_figure(inf));
 }
 
 int		enemy_figure(t_fl *inf)
@@ -42,7 +53,7 @@ int		enemy_figure(t_fl *inf)
 				distance(inf);
 			inf->en_f_x++;
 		}
-		inf->en_f_y ++;
+		inf->en_f_y++;
 	}
 	return (1);
 }
@@ -73,18 +84,4 @@ int		distance(t_fl *inf)
 		inf->dis_y++;
 	}
 	return (1);
-}
-
-int		dist_forml(t_fl * inf)
-{
-	int		distance;
-	int		distance2;
-
-	distance = (inf->dis_y - inf->en_f_y);
-	if (distance < 0)
-		distance *= -1;
-	distance2 = (inf->dis_x - inf->en_f_x);
-	if (distance2 < 0)
-		distance2 *= -1;
-	return (distance + distance2);
 }

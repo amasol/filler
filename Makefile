@@ -1,11 +1,23 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: amasol <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/09/14 14:23:58 by amasol            #+#    #+#              #
+#    Updated: 2018/09/14 14:24:12 by amasol           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = filler
 
-SRC = main.c\
-	  ft_parsing.c\
+SRC = ft_parsing.c\
 	  outline.c\
 	  outline_and_stroke.c\
-	  ft_supportive.c
+	  ft_supportive.c\
+	  start.c\
+	  main.c
 
 OBJ = $(SRC:.c=.o)
 

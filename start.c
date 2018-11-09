@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_supportive.c                                    :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/14 14:24:29 by amasol            #+#    #+#             */
-/*   Updated: 2018/09/14 14:24:30 by amasol           ###   ########.fr       */
+/*   Created: 2018/09/14 14:25:31 by amasol            #+#    #+#             */
+/*   Updated: 2018/09/14 14:25:32 by amasol           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		ft_refreshers(t_fl *inf)
+void			zero_out(t_fl *inf)
 {
-	int y;
-
-	y = 0;
-	while (inf->pic_y > y)
-	{
-		free(inf->figure[y]);
-		y++;
-	}
-	free(inf->figure);
-	return (1);
+	inf->map_x = 0;
+	inf->map_y = 0;
+	inf->pic_y = 0;
+	inf->pic_x = 0;
+	inf->mites = 0;
+	inf->end_y = 0;
+	inf->end_x = 0;
 }
 
-int		dist_forml(t_fl *inf)
+int				parsing(t_fl *inf)
 {
-	int	distance;
-	int	distance2;
-
-	distance = (inf->dis_y - inf->en_f_y);
-	if (distance < 0)
-		distance *= -1;
-	distance2 = (inf->dis_x - inf->en_f_x);
-	if (distance2 < 0)
-		distance2 *= -1;
-	return (distance + distance2);
+	zero_out(inf);
+	pars_line(inf);
+	matrix(inf);
+	territory(inf);
+	ft_output(inf);
+	ft_refreshers(inf);
+	return (1);
 }

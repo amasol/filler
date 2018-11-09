@@ -3,111 +3,89 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/06 16:43:01 by klut              #+#    #+#             */
-/*   Updated: 2017/09/12 16:49:06 by klut             ###   ########.fr       */
+/*   Created: 2018/09/14 12:40:11 by amasol            #+#    #+#             */
+/*   Updated: 2018/09/14 12:40:16 by amasol           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static	t_gnl_node	*ft_lst_create(int fd)
+static char		*ft_join_free(char *s1, char *s2)
 {
-	t_gnl_node					*file;
+	int		i;
+	int		j;
+	char	*tmp;
 
-	file = (t_gnl_node *)malloc((sizeof(t_gnl_node)));
-	file->file_descr = fd;
-	file->inf = NULL;
-	file->next = NULL;
-	return (file);
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
+	tmp = (char*)ft_memalloc(sizeof(char) * (i + j + 1));
+	i = -1;
+	while (s1 && s1[++i])
+		tmp[i] = s1[i];
+	if (s1)
+		free(s1);
+	j = -1;
+	while (s2 && s2[++j])
+		tmp[i + j] = s2[j];
+	return (tmp);
 }
 
-static	t_gnl_node	*ft_lst_managment(int fd, t_gnl_node *ptr)
+static int		ft_check_line(char **stock, char **line)
 {
-	while (ptr)
-	{
-		if (fd != ptr->file_descr)
-		{
-			if (ptr->next == NULL)
-			{
-				ptr->next = ft_lst_create(fd);
-				return (ptr->next);
-			}
-			else
-				ptr = ptr->next;
-		}
-		else
-			return (ptr);
-	}
-	return (ptr);
-}
+	char	*str;
+	char	*tmp;
 
-int					newline_finder(t_gnl_node *pf, char *buff, char **line,
-		int number)
-{
-	char						*position;
-	char						*ptr;
-	unsigned long				len;
-
-	ptr = *line;
-	if (ft_strchr(buff, '\n'))
-	{
-		position = ft_strchr(buff, '\n');
-		len = position - buff;
-		buff[len] = '\0';
-		position++;
-		*line = ft_strjoin(*line, buff);
-		if (ptr != NULL)
-			free(ptr);
-		pf->inf = ft_strdup(position);
-		return (1);
-	}
-	*line = ft_strjoin(*line, buff);
-	if (ptr != NULL)
-		free(ptr);
-	ft_bzero(buff, number);
-	return (0);
-}
-
-int					main_sequence(t_gnl_node *pf, char **line, int fd,
-		char *buff)
-{
-	int number;
-
-	*line = ft_strnew(1);
-	if (pf->inf != NULL)
-	{
-		number = ft_strlen(pf->inf);
-		if (newline_finder(pf, pf->inf, line, number))
-			return (1);
-	}
-	while ((number = read(fd, buff, BUFF_SIZE)) > 0)
-	{
-		buff[number] = '\0';
-		if (newline_finder(pf, buff, line, number))
-			return (1);
-	}
-	if (number == 0 && ft_strlen(*line) == 0)
+	tmp = *stock;
+	str = ft_strchr(*stock, '\n');
+	if (!str)
 		return (0);
+	*str = '\0';
+	*line = ft_strdup(*stock);
+	*stock = ft_strdup(str + 1);
+	free(tmp);
 	return (1);
 }
 
-int					get_next_line(const int fd, char **line)
+static int		ft_last_line(char **stock, char **line)
 {
-	static	t_gnl_node			*primary_node;
-	t_gnl_node					*temporary_node;
-	char						array_buffer[BUFF_SIZE + 1];
-
-	if ((fd < 0 || BUFF_SIZE < 1 || line == NULL
-				|| read(fd, array_buffer, 0) < 0) || fd > OPEN_MAX)
-		return (-1);
-	while (primary_node)
+	*line = ft_strdup(*stock);
+	free(*stock);
+	*stock = NULL;
+	if (*line[0] == '\0')
 	{
-		temporary_node = ft_lst_managment(fd, primary_node);
-		return (main_sequence(temporary_node, line, fd, array_buffer));
+		free(*line);
+		*line = NULL;
+		return (0);
 	}
-	if (!primary_node)
-		primary_node = ft_lst_create(fd);
-	return (main_sequence(primary_node, line, fd, array_buffer));
+	return (1);
+}
+
+int				get_next_line(int const fd, char **line)
+{
+	static char	*s[2048];
+	char		buff[BUFF_SIZE + 1];
+	int			ret;
+
+	if (fd < 0 || fd > 2048 || !line || BUFF_SIZE < 0)
+		return (-1);
+	if (s[fd] && ft_check_line(&(s[fd]), line))
+		return (1);
+	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[ret] = '\0';
+		if (s[fd])
+			s[fd] = ft_join_free(s[fd], buff);
+		else
+			s[fd] = ft_strdup(buff);
+		if (ft_check_line(&(s[fd]), line))
+			return (1);
+	}
+	if (s[fd] && ret >= 0)
+		return (ft_last_line(&(s[fd]), line));
+	if (ret > 0)
+		return (1);
+	else
+		return (ret);
 }

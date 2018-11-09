@@ -3,23 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/06 10:57:30 by klut              #+#    #+#             */
-/*   Updated: 2016/12/20 18:19:58 by klut             ###   ########.fr       */
+/*   Created: 2017/11/09 17:05:51 by amasol            #+#    #+#             */
+/*   Updated: 2017/11/09 17:05:54 by amasol           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 void	ft_strclr(char *s)
 {
-	int size;
-
-	if (s != NULL)
-	{
-		size = ft_strlen(s);
-		ft_bzero(s, size);
-	}
+	if (s)
+		ft_bzero(s, ft_strlen(s));
 }

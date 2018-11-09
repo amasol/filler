@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasol <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/26 12:59:58 by amasol            #+#    #+#             */
-/*   Updated: 2017/11/26 12:59:59 by amasol           ###   ########.fr       */
+/*   Created: 2017/11/27 18:06:25 by amasol            #+#    #+#             */
+/*   Updated: 2017/11/27 18:12:55 by amasol           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstadd(t_list **alst, t_list *new)
+int		ft_space(char str)
 {
-	if (!alst && !new)
-		return ;
-	new->next = *alst;
-	*alst = new;
-	return ;
+	if (str == '\n' || str == ' ' || str == '\t' || str == '\f' ||
+			str == '\r' || str == '\v')
+		return (1);
+	else
+		return (0);
 }
