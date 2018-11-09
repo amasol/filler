@@ -37,10 +37,10 @@ int		valid_check(t_fl *inf)
 
 	x = 0;
 	val_fig = 0;
-	while (x < inf->pic_x)
+	while (inf->pic_x > x)
 	{
 		y = 0;
-		while (y < inf->pic_y)
+		while (inf->pic_y > y)
 		{
 			if (inf->figure[y][x] == '*')
 			{
@@ -64,10 +64,10 @@ int		determ_course(t_fl *inf)
 
 	dc_x = 0;
 	inf->opt_turn = 0;
-	while (dc_x < inf->pic_x)
+	while (inf->pic_x > dc_x)
 	{
 		dc_y = 0;
-		while (dc_y < inf->pic_y)
+		while (inf->pic_y > dc_y)
 		{
 			if (inf->figure[dc_y][dc_x] == '*')
 				inf->opt_turn +=

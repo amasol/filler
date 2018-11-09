@@ -16,7 +16,6 @@
 
 typedef struct	s_fl
 {
-	int			fd;
 	int			map_y;
 	int			map_x;
 	int			pic_y;

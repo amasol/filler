@@ -16,13 +16,18 @@ int		ft_refreshers(t_fl *inf)
 {
 	int y;
 
-	y = 0;
-	while (inf->pic_y > y)
-	{
+	y = -1;
+	while (++y < inf->pic_y)
 		free(inf->figure[y]);
-		y++;
-	}
 	free(inf->figure);
+	y = -1;
+	while (++y < inf->map_y)
+		free(inf->map[y]);
+	free(inf->map);
+	y = -1;
+	while (++y < inf->map_y)
+		free(inf->matrix[y]);
+	free(inf->matrix);
 	return (1);
 }
 

@@ -14,7 +14,7 @@
 
 int		pars_line(t_fl *inf)
 {
-	if (get_next_line(0, &(inf->line)) > 0)
+	if (get_next_line(0, &inf->line) > 0)
 	{
 		if (*(inf->line + 10) == '1')
 			inf->my_bot = 'O';
@@ -31,7 +31,7 @@ int		pars_line(t_fl *inf)
 
 int		pars_map_xy(t_fl *inf)
 {
-	if (get_next_line(0, &(inf->line)) > 0)
+	if (get_next_line(0, &inf->line) > 0)
 	{
 		inf->map_y = ft_atoi(inf->line + 8);
 		inf->map_x = ft_atoi(inf->line + 11);
@@ -51,7 +51,7 @@ int		save_map(t_fl *inf)
 	free(inf->line);
 	if (!(inf->map = (char **)malloc(sizeof(char *) * (inf->map_y + 1))))
 		return (0);
-	while (get_next_line(0, &(inf->line)) && i_map_y < inf->map_y)
+	while (get_next_line(0, &inf->line) && i_map_y < inf->map_y)
 	{
 		inf->map[i_map_y] = ft_strsub(inf->line, 4, (size_t)inf->map_x);
 		i_map_y++;
